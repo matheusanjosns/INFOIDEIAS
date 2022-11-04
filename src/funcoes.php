@@ -15,15 +15,12 @@ class Funcoes
 
      * */
     public function SeculoAno(int $ano): int {
-        
-    }
-
+            
+        $seculoAtual = (($ano - 2) / 100) + 1 ;
     
-	
-	
-	
-	
-	
+        return $seculoAtual + 0.01;
+
+    }
 	
 	
 	/*
@@ -37,16 +34,40 @@ class Funcoes
 
      * */
     public function PrimoAnterior(int $numero): int {
+
+        $contador = 0;
+
+        for($iniator = 1; $iniator <= $numero; $iniator++){
+            
+            if($numero % $iniator == 0){
+
+                $contador++;
+            }
+        }
         
+        if($contador == 2){
+            
+            return 1;
+
+        }else {
+            
+            return  0;
+
+        }
+
     }
 
+    public function InterValo(int $numero):int{
 
-
-
-
-
-
-
+        for($iniator = 2; $iniator < $numero; $iniator++){
+            if($this->PrimoAnterior($iniator) == 1){
+                
+                $resultFinal = array($iniator);
+               
+            }
+        }
+        return max($resultFinal);
+    }
 
 
     /*
@@ -65,15 +86,30 @@ class Funcoes
 	resposta = 25
 
      * */
-    public function SegundoMaior(array $arr): int {
+    public function SegundoMaior(array $arr):int {
+       
+        $primeiroValor = $segundoValor = PHP_INT_MIN;
         
+        for($chave = 0; $chave < 4; $chave++){
+             
+             for($valor = 0; $valor <= 2;$valor++ ){
+ 
+                 if ($arr[$chave][$valor] > $primeiroValor)
+                 {
+                     $segundoValor = $primeiroValor;
+                     $primeiroValor = $arr[$chave][$valor];
+                 }
+                 else if ($arr[$chave][$valor] > $segundoValor && $arr[$chave][$valor] != $primeiroValor){
+ 
+                     $segundoValor = $arr[$chave];
+                 }
+                         
+             }
+ 
+         }
+         
+         return $segundoValor;
     }
-	
-	
-	
-	
-	
-	
 	
 
     /*
